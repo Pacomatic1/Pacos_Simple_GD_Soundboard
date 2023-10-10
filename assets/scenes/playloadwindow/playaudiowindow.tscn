@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cty7a4mr2jeyd"]
+
+[ext_resource type="Script" path="res://assets/scenes/misc/audioplayermodule.gd" id="1_6kdbo"]
+
+[node name="MainParentNode" type="Node"]
+
+[node name="UIparent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="UIparent"]
+layout_mode = 0
+offset_right = 538.0
+offset_bottom = 100.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("1_6kdbo")

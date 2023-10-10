@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cdwwpsj756qdd"]
+
+[node name="ImageDialog" type="FileDialog"]
+title = "Open a File"
+initial_position = 4
+size = Vector2i(335, 162)
+visible = true
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+access = 2

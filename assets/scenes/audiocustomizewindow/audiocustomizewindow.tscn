@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://8631x1jb1cem"]
+
+[ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/audiocustomizewindow.gd" id="1_bk5al"]
+[ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/UnchosenAudioImage.png" id="1_jkgtl"]
+
+[node name="AddCustomizeAudio" type="Window"]
+title = "Choose your settings"
+initial_position = 2
+size = Vector2i(426, 204)
+exclusive = true
+unresizable = true
+script = ExtResource("1_bk5al")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="OK and Cancel" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 40.0
+offset_bottom = 110.0
+
+[node name="Button2" type="Button" parent="Node/OK and Cancel"]
+layout_mode = 0
+offset_left = 6.185
+offset_top = 98.695
+offset_right = 52.455
+offset_bottom = 129.695
+text = "Save
+"
+
+[node name="Button" type="Button" parent="Node/OK and Cancel"]
+layout_mode = 0
+offset_left = 61.196
+offset_top = 99.21
+offset_right = 121.196
+offset_bottom = 130.21
+text = "Cancel
+"
+
+[node name="Audio" type="Control" parent="Node"]
+layout_mode = 3
+anchor_left = 0.021
+anchor_top = 0.422
+anchor_right = 0.288
+anchor_bottom = 0.652
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Node/Audio"]
+layout_mode = 0
+offset_left = -2.5
+offset_top = -11.345
+offset_right = 50.5
+offset_bottom = 19.655
+text = "Audio"
+
+[node name="TextEdit" type="TextEdit" parent="Node/Audio"]
+offset_left = 52.669
+offset_top = -11.36
+offset_right = 260.669
+offset_bottom = 25.815
+placeholder_text = "Choose something, idiot!!"
+editable = false
+
+[node name="Image" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 169.86
+offset_right = 169.86
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Node/Image"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 73.19
+offset_right = 250.0
+offset_bottom = 201.19
+texture_normal = ExtResource("1_jkgtl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Node/Image"]
+layout_mode = 0
+offset_left = 96.26
+offset_top = 179.485
+offset_right = 196.64
+offset_bottom = 205.485
+rotation = 4.71239
+text = "Your Image"
+
+[node name="TextName" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextEdit" type="TextEdit" parent="Node/TextName"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 419.645
+offset_bottom = 68.985
+placeholder_text = "Give it a name, chucklenuts."
+
+[connection signal="pressed" from="Node/Audio/Button" to="." method="when_audiosel_button_pressed"]
+[connection signal="pressed" from="Node/Image/TextureButton" to="." method="when_imgsel_button_pressed"]
