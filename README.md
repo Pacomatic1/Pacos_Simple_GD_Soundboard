@@ -3,8 +3,8 @@
 When this project was started, I played Fortnite a ton with my friends. I used YouTube for many of my sound effects.  
 But YouTube is slow and impractical because it's... anything _but_ a soundboard.  
 So I thought, screw it, why not.  
-### Using the Program
-Should be obvious.
+### How to use the Program
+I'm no overpaid designer, but this one should be quite obvious. I hope.  
 ### Compiling and Editing
 This was made in Godot 4.1.  
 So to do anything to the program, get Godot 4.1, and open the source code.  
