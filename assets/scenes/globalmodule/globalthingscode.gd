@@ -1,17 +1,25 @@
 extends Node
 signal sound_has_been_saved
-var CurrentProfile = "I need to add profile support twt"
+var CurrentProfile = "add profiles please"
 func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImagePath: String, AudioPath: String):
+	# Add the directories in case it's their first time.
+	# It's done one by one because it doesn't work in bulk. I hate it too.
+	print("Making needed directories...")
+	DirAccess.make_dir_absolute("user://profiles")
+	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile)
+	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile + "/soundeffets/" )
+	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile + "/soundeffets/" + UniqueSoundID)
+	
+	
+	
 	print("Saving sound...")
 	print("Sound Name: " + SoundTitle)
 	print("Sound ID: " + UniqueSoundID)
 	print("Image Path: " + ImagePath)
 	print("Audio Path: " + AudioPath)
 	# This part will start with the title.
-	var soundconfig = ConfigFile.new()
-	soundconfig.set_value("SongText", "songname", SoundTitle)
-	#	soundconfig.save("user://profiles/" + self.CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffectconfig.cfg")
-	soundconfig.save("user://pril/soundeffectconfig.cfg")
+	var titlefile = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/title.txt", FileAccess.WRITE)
+	titlefile.store_string("stong")
 	emit_signal("sound_has_been_saved")
 	print("Save complete.")
 func PlayAudioFile(pathtofile):
