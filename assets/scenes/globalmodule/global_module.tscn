@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5i307707wro"]
+
+[ext_resource type="Script" path="res://assets/scenes/globalmodule/globalthingscode.gd" id="1_jse5s"]
+
+[node name="GlobalModule" type="Node"]
+script = ExtResource("1_jse5s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cty7a4mr2jeyd"]
 
-[ext_resource type="Script" path="res://assets/scenes/misc/audioplayermodule.gd" id="1_6kdbo"]
+[ext_resource type="Script" path="res://assets/scenes/playloadwindow/playaudiowindow.gd" id="1_7wugq"]
 
 [node name="MainParentNode" type="Node"]
+script = ExtResource("1_7wugq")
 
 [node name="UIparent" type="Control" parent="."]
 layout_mode = 3
@@ -18,10 +19,10 @@ offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LineEdit" type="LineEdit" parent="UIparent"]
+[node name="Button" type="Button" parent="UIparent"]
 layout_mode = 0
-offset_right = 538.0
-offset_bottom = 100.0
+offset_right = 348.0
+offset_bottom = 38.0
+text = "Create a new sound, batsy!!!!!!!!!!!!!"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("1_6kdbo")
+[connection signal="pressed" from="UIparent/Button" to="." method="when_new_sound_button_pressed"]

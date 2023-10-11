@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://8631x1jb1cem"]
+[gd_scene load_steps=3 format=3 uid="uid://b1wnh57uyoy0d"]
 
 [ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/audiocustomizewindow.gd" id="1_bk5al"]
-[ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/UnchosenAudioImage.png" id="1_jkgtl"]
+[ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/unchosenaudioimage.png" id="2_lqb3e"]
 
 [node name="AddCustomizeAudio" type="Window"]
 title = "Choose your settings"
 initial_position = 2
 size = Vector2i(426, 204)
+transient = true
 exclusive = true
 unresizable = true
 script = ExtResource("1_bk5al")
@@ -62,7 +63,7 @@ offset_left = 52.669
 offset_top = -11.36
 offset_right = 260.669
 offset_bottom = 25.815
-placeholder_text = "Choose something, idiot!!"
+placeholder_text = "Choose some audio."
 editable = false
 
 [node name="Image" type="Control" parent="Node"]
@@ -82,7 +83,7 @@ offset_left = 122.0
 offset_top = 73.19
 offset_right = 250.0
 offset_bottom = 201.19
-texture_normal = ExtResource("1_jkgtl")
+texture_normal = ExtResource("2_lqb3e")
 ignore_texture_size = true
 stretch_mode = 0
 
