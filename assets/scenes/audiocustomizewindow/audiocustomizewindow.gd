@@ -30,7 +30,7 @@ var image_which_was_selected = Image.new()
 var image_file_selected_has_been_connected
 func when_imgsel_button_pressed():
 	add_child(image_file_dialog.instantiate())
-	$"ImageDialog".add_filter("*.tga, *.hdr, *.webp, *.jpeg, *.jpg, *.png","Images")
+	$"ImageDialog".add_filter("*.webp, *.jpeg, *.jpg, *.png","Images")
 	if not image_file_selected_has_been_connected:
 		$"ImageDialog".file_selected.connect(when_image_file_selected)
 	image_file_selected_has_been_connected = true

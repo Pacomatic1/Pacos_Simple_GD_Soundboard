@@ -19,12 +19,13 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	# This part will start with the title.
 	var titlefile = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/title.txt", FileAccess.WRITE)
 	titlefile.store_string(SoundTitle)
-	emit_signal("sound_has_been_saved")
 	# Now for the image.
-	var ImageToStore = Image.load_from_file(ImagePath)
-	# TODO: Convert from thingy to PNG
-	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/") 
+	var ImageToStore = Image.load_from_file(ImagePath) # Get the image. 
+	if ImagePath == "res://assets/themes/default/unchosenaudioimage.png":
+		 # Get the image. 
+	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png") 
 	print("Save complete.")
+	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID)
 func PlayAudioFile(pathtofile):
 	# Call this function, with whatever path you desire. Then it will do the thing.
