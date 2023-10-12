@@ -42,10 +42,6 @@ func when_image_file_selected(path_for_image):
 
 # This happens when you click save.
 func when_settings_saved():
-	#First, add some stuff if you didn't do it yourself.
-	if image_file_path == null: image_file_path = "res://assets/themes/default/unchosenaudioimage.png"
-	if audio_file_path == null: audio_file_path = "res://assets/themes/default/unchosenaudio.mp3"
-	if $Node/TextName/TextEdit.text == null: $Node/Audio/TextEdit.text = "You didn't pick a name. So I did it for you."
 	# Once the thing is done, the window should close.
 	$/root/GlobalModule.sound_has_been_saved.connect(once_settings_have_finished_saving)
 	# Send this over to the global module. 

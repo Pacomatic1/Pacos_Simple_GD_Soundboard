@@ -19,10 +19,13 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	# This part will start with the title.
 	var titlefile = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/title.txt", FileAccess.WRITE)
 	titlefile.store_string(SoundTitle)
+	
 	# Now for the image.
-	var ImageToStore = Image.load_from_file(ImagePath) # Get the image. 
-	if ImagePath == "res://assets/themes/default/unchosenaudioimage.png":
-		 pass
+	var ImageToStore
+	if ImagePath == null: # If you didn't choose anything, replace it with this, Since you can't load from a resource in export, I have to use this workaround.
+		ImagePath = "res://assets/themes/default/unchosenaudioimage.png"
+		ImageToStore = load(ImagePath).get_image() 
+	else: ImageToStore = Image.load_from_file(ImagePath) 
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png") 
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
