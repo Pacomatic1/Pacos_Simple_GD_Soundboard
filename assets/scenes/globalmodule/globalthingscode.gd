@@ -21,8 +21,7 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	titlefile.store_string(SoundTitle)
 	emit_signal("sound_has_been_saved")
 	# Now for the image.
-	var ImageToStore = Image.new()
-	Image.load_from_file(ImagePath)
+	var ImageToStore = Image.load_from_file(ImagePath)
 	# TODO: Convert from thingy to PNG
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/") 
 	print("Save complete.")
