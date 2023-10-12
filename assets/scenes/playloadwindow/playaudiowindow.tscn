@@ -20,9 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="UIparent"]
-layout_mode = 0
-offset_right = 348.0
-offset_bottom = 38.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.604
+anchor_bottom = 0.117
+offset_right = 0.0959778
+offset_bottom = 0.0919991
 text = "Create a new sound, batsy!!!!!!!!!!!!!"
 
 [connection signal="pressed" from="UIparent/Button" to="." method="when_new_sound_button_pressed"]
