@@ -22,7 +22,7 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	# Now for the image.
 	var ImageToStore = Image.load_from_file(ImagePath) # Get the image. 
 	if ImagePath == "res://assets/themes/default/unchosenaudioimage.png":
-		 # Get the image. 
+		 pass
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png") 
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
