@@ -42,6 +42,9 @@ func when_image_file_selected(path_for_image):
 
 # This happens when you click save.
 func when_settings_saved():
+	# So that it doesn't give 'nil' which causes stinky errors....
+	if image_file_path == null: image_file_path = ''
+	if audio_file_path == null: audio_file_path = ''
 	# Once the thing is done, the window should close.
 	$/root/GlobalModule.sound_has_been_saved.connect(once_settings_have_finished_saving)
 	# Send this over to the global module. 
