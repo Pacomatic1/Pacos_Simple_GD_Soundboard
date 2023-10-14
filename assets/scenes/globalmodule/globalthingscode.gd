@@ -2,16 +2,13 @@ extends Node
 signal sound_has_been_saved
 var CurrentProfile = "add profiles sometime"
 func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImagePath: String, AudioPath: String):
+	print("Saving sound...")
 	# Add the directories in case it's their first time.
 	# It's done one by one because it doesn't work in bulk. I hate it too.
-	print("Making needed directories...")
 	DirAccess.make_dir_absolute("user://profiles")
 	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile)
 	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" )
 	DirAccess.make_dir_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID)
-	
-	
-	print("Saving sound...")
 	print("Sound Name: " + SoundTitle)
 	print("Sound ID: " + UniqueSoundID)
 	print("Image Path: " + ImagePath)
@@ -27,14 +24,20 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	else: ImageToStore = Image.load_from_file(ImagePath) 
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png")
 	# Now for the audio.
-	var AudioToStore
-	if AudioPath == '':
-		AudioPath = "res://assets/themes/default/unchosenaudio.mp3"
-	else: AudioToStore = load(AudioPath).get_audio()
-	print(str(AudioPath))
+	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.mp3"
+	var AudioToStore = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffect." + AudioPath.get_extension(), FileAccess.WRITE)
+	var AudioToStoreBuffer
+	AudioToStoreBuffer = FileAccess.get_file_as_bytes(AudioPath)
+	AudioToStore.store_buffer(AudioToStoreBuffer)
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + '/')
+
+
+
+
+
+
 func PlayAudioFile(pathtofile):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!
