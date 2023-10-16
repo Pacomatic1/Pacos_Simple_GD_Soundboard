@@ -1,39 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://cty7a4mr2jeyd"]
+[gd_scene load_steps=3 format=3 uid="uid://68ca2vk6tjtg"]
 
 [ext_resource type="Script" path="res://assets/scenes/playloadwindow/playaudiowindow.gd" id="1_7wugq"]
+[ext_resource type="Texture2D" uid="uid://bqwa303ek508t" path="res://assets/themes/default/plusicon.png" id="2_pulwo"]
 
 [node name="MainParentNode" type="Node"]
 script = ExtResource("1_7wugq")
 
-[node name="UIparent" type="Control" parent="."]
+[node name="UI_Parent" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 1.176
-anchor_top = 1.16
-anchor_right = 1.176
-anchor_bottom = 1.16
-offset_left = -677.376
-offset_top = -375.84
-offset_right = -101.376
-offset_bottom = -51.84
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="UIparent"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="UIparent"]
+[node name="TopBar" type="Control" parent="UI_Parent"]
+layout_direction = 2
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.096
-offset_left = -160.992
-offset_bottom = -0.104
-grow_horizontal = 0
-tooltip_text = "Used to create a new sound for your soundboard."
-theme_override_font_sizes/font_size = 0
-text = "New Sound Effect"
+grow_horizontal = 2
 
-[connection signal="pressed" from="UIparent/Button" to="." method="when_new_sound_button_pressed"]
+[node name="FileButton" type="Control" parent="UI_Parent/TopBar"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 191.0
+offset_bottom = 32.0
+
+[node name="FileModButton" type="Button" parent="UI_Parent/TopBar/FileButton"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+icon = ExtResource("2_pulwo")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="UI_Parent/TopBar/FileButton/FileModButton" to="." method="_on_file_mod_button_pressed"]

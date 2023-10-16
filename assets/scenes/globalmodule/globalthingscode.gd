@@ -24,7 +24,7 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	else: ImageToStore = Image.load_from_file(ImagePath) 
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png")
 	# Now for the audio.
-	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.mp3"
+	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.ogg"
 	var AudioToStore = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffect." + AudioPath.get_extension(), FileAccess.WRITE)
 	var AudioToStoreBuffer
 	AudioToStoreBuffer = FileAccess.get_file_as_bytes(AudioPath)
@@ -32,13 +32,16 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + '/')
+	# Close and flush.
+	AudioToStore.flush()
+	titlefile.flush()
 
 
 
 
 
-
-func PlayAudioFile(pathtofile):
+func _ready(): PlayAudioFile("C:/Users/ammar/Documents/Ammars Stuff/My Games, bots, etc/Games Using Godot/projects/Hand-Made Soundboard/assets/themes/default/unchosenaudio.ogg")
+func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!
 	$AudioStreamPlayer.stream = load(pathtofile)

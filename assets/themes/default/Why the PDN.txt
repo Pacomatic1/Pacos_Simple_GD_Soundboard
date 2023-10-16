@@ -1,2 +1,2 @@
 These .pdn files are Paint.net files. So if you want to get the thingy but with layers, download paint.net.
-If you don't have Windows, then use WINE or something.
+If you don't have Windows, then use WINE.
