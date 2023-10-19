@@ -7,9 +7,14 @@ func _ready():
 var unique_sound_id
 func when_given_information(unique_id):
 	unique_sound_id = unique_id
+	# TODO: See if there is already something with the same unique id
+	var check_for_existing_id = FileAccess.open("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/', FileAccess.READ)
+	print(error_string(FileAccess.get_open_error()))
+	
+	
 
 
-# This stuff is for selectning an audio file.
+# This stuff is for selecting an audio file.
 var audio_file_dialog = load("res://assets/scenes/audiocustomizewindow/filedialogs/audio_dialog/audio_dialog.tscn")
 var audio_file_path
 var audio_file_selected_has_been_connected
@@ -21,8 +26,7 @@ func when_audiosel_button_pressed():
 func when_audio_file_selected(path_for_audio):
 	audio_file_path = path_for_audio
 	$Node/Audio/TextEdit.text = audio_file_path
-
-
+	
 # This stuff is for selecting an image file.
 var image_file_dialog = load("res://assets/scenes/audiocustomizewindow/filedialogs/image_dialog/image_dialog.tscn")
 var image_file_path
@@ -57,7 +61,7 @@ func once_settings_have_finished_saving():
 
 
 # This happens when you cancel or close the window.
-func when_window_closed(): _on_cancel_pressed() # I could link the signal directly to when_cancel_pressed, but who knows, maybe I might want to do something extra. Plus, th eextra slowdown is so negligible that nobody loses anyways.
+func when_window_closed(): _on_cancel_pressed() # I could link the signal directly to when_cancel_pressed, but who knows, maybe I might want to do something extra. Plus, the extra slowdown is so negligible that nobody loses anyways.
 func _on_cancel_pressed():
 	print("Cancelling sound...")
 	print('Cancelling complete.')

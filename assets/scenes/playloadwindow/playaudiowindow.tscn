@@ -28,9 +28,10 @@ offset_right = 191.0
 offset_bottom = 32.0
 
 [node name="FileModButton" type="Button" parent="UI_Parent/TopBar/FileButton"]
-layout_mode = 1
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_pulwo")
 icon_alignment = 1
 expand_icon = true

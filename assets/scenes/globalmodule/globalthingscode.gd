@@ -35,12 +35,6 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	# Close and flush.
 	AudioToStore.flush()
 	titlefile.flush()
-
-
-
-
-
-func _ready(): PlayAudioFile("C:/Users/ammar/Documents/Ammars Stuff/My Games, bots, etc/Games Using Godot/projects/Hand-Made Soundboard/assets/themes/default/unchosenaudio.ogg")
 func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!
