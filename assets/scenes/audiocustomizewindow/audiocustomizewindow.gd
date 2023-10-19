@@ -7,11 +7,10 @@ func _ready():
 var unique_sound_id
 func when_given_information(unique_id):
 	unique_sound_id = unique_id
-	# TODO: See if there is already something with the same unique id
-	var check_for_existing_id = FileAccess.open("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/', FileAccess.READ)
-	print(error_string(FileAccess.get_open_error()))
-	
-	
+	# First, Load sound data
+	var check_for_existing_id = FileAccess.open("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/title.txt', FileAccess.READ)
+	if FileAccess.get_open_error() == 0:
+		$Node/TextName/TextEdit.text = FileAccess.get_file_as_string("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/title.txt')
 
 
 # This stuff is for selecting an audio file.
