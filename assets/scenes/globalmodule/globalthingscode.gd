@@ -1,6 +1,6 @@
 extends Node
 signal sound_has_been_saved
-var CurrentProfile = "add profiles sometime"
+var CurrentProfile = "0"
 func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImagePath: String, AudioPath: String):
 	print("Saving sound...")
 	# Add the directories in case it's their first time.
@@ -13,9 +13,11 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	print("Sound ID: " + UniqueSoundID)
 	print("Image Path: " + ImagePath)
 	print("Audio Path: " + AudioPath)
-	# This part will start with the title.
+	var ConfigFileForSound = ConfigFile.new() # This part will create a configuration file for some other data. The configuration file will be saved wayy at the end. Although it might seem quite pointless to use it for things that aren't a config, it's also super easy, and since this is being done during sound creation optimization is negligible. 
+	# This part will start with the title. I used a .txt instead of a config because I don't want any conflicts between config and title string. 
 	var titlefile = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/title.txt", FileAccess.WRITE)
 	titlefile.store_string(SoundTitle)
+	titlefile.close()
 	# Now for the image.
 	var ImageToStore
 	if ImagePath == '': # If you didn't choose anything, replace it with this. Since you can't load a resource as a standard image in export, I have to use this as a workaround.
@@ -25,16 +27,18 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png")
 	# Now for the audio.
 	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.ogg"
-	var AudioToStore = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffect." + AudioPath.get_extension(), FileAccess.WRITE)
-	var AudioToStoreBuffer
-	AudioToStoreBuffer = FileAccess.get_file_as_bytes(AudioPath)
-	AudioToStore.store_buffer(AudioToStoreBuffer)
+	if AudioPath != "The audio is not going to be modified.":
+		var AudioToStore = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffect." + AudioPath.get_extension(), FileAccess.WRITE)
+		ConfigFileForSound.set_value("SoundFXAudioFile", "AudioFileExtension", AudioPath.get_extension())
+		var AudioToStoreBuffer
+		AudioToStoreBuffer = FileAccess.get_file_as_bytes(AudioPath)
+		AudioToStore.store_buffer(AudioToStoreBuffer)
+		AudioToStore.close()
+	# And now we can finally save the configuration file.
+	ConfigFileForSound.save("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/miscellaneous.cfg")
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + '/')
-	# Close and flush.
-	AudioToStore.flush()
-	titlefile.flush()
 func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!

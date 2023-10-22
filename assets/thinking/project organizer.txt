@@ -1,0 +1,17 @@
+TASKS ON DA LIST-------------------------------------------
+	TO DO
+		Functioning audio player
+		Add grid so you can actually USE THE SOUNDBOARD 😲😲🙀🙀🙀🙀🙀😲😲 (I'm so sorry)
+			Grid Layout
+				Load functionality
+					image Preview
+	COMPLETED
+		Save and modification system for sounds
+			Save sounds
+			Audio path preview
+			title thingy
+			image preview
+				When retrieving sound and not doing anything, make sure nothing hapens to the audio and image. 
+	BACKBURNER AND NOT PRIORITY
+		Profile support (do it once the thing actualy works)
+			- Should mostly be a reload and some stuff in the global module (if i was smart :/)

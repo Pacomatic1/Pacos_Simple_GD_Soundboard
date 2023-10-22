@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1wnh57uyoy0d"]
+[gd_scene load_steps=4 format=3 uid="uid://b1wnh57uyoy0d"]
 
 [ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/audiocustomizewindow.gd" id="1_bk5al"]
+[ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/TextEdit.gd" id="2_2w8tm"]
 [ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/unchosenaudioimage.png" id="2_lqb3e"]
 
 [node name="AddCustomizeAudio" type="Window"]
@@ -13,6 +14,23 @@ unresizable = true
 script = ExtResource("1_bk5al")
 
 [node name="Node" type="Node" parent="."]
+
+[node name="TextName" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextEdit" type="TextEdit" parent="Node/TextName"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 419.645
+offset_bottom = 68.985
+placeholder_text = "Give it a name, chucklenuts."
+draw_tabs = true
+script = ExtResource("2_2w8tm")
 
 [node name="OK and Cancel" type="Control" parent="Node"]
 layout_mode = 3
@@ -65,6 +83,8 @@ offset_right = 260.669
 offset_bottom = 25.815
 placeholder_text = "Choose some audio."
 editable = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Image" type="Control" parent="Node"]
 layout_mode = 3
@@ -95,21 +115,6 @@ offset_right = 196.64
 offset_bottom = 205.485
 rotation = 4.71239
 text = "Your Image"
-
-[node name="TextName" type="Control" parent="Node"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 1
-
-[node name="TextEdit" type="TextEdit" parent="Node/TextName"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 419.645
-offset_bottom = 68.985
-placeholder_text = "Give it a name, chucklenuts."
 
 [connection signal="pressed" from="Node/OK and Cancel/save" to="." method="when_settings_saved"]
 [connection signal="pressed" from="Node/OK and Cancel/cancel" to="." method="_on_cancel_pressed"]

@@ -2,15 +2,29 @@ extends Window
 func _ready():
 	self.close_requested.connect(when_window_closed)
 	get_parent().send_to_modify_sound_effect.connect(when_given_information)
+	$Node/TextName/TextEdit.grab_focus()
 
 # When the parent tells it impportant imformation
 var unique_sound_id
 func when_given_information(unique_id):
 	unique_sound_id = unique_id
-	# First, Load sound data
-	var check_for_existing_id = FileAccess.open("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/title.txt', FileAccess.READ)
+	# First, retrieve data.
+	# See if the sound already exists. 
+	# We *could* find the folder, but due to the placeholders and everything, it means that if the sound exists at all, the title.txt must as well. So I did this because it's easier. -Paco
+	FileAccess.open("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/title.txt', FileAccess.READ)
 	if FileAccess.get_open_error() == 0:
+		# Title
 		$Node/TextName/TextEdit.text = FileAccess.get_file_as_string("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/title.txt')
+		$Node/Audio/TextEdit.text = "Already chosen."
+		# Image
+		var alreadyselected_imagepreview = Image.new()
+		image_file_path = "user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/coverimage.png'
+		alreadyselected_imagepreview.load("user://profiles/" + $/root/GlobalModule.CurrentProfile + "/soundeffects/" + unique_sound_id + '/coverimage.png')
+		$Node/Image/TextureButton.texture_normal = ImageTexture.create_from_image(alreadyselected_imagepreview)
+		# Audio
+		audio_file_path = "The audio is not going to be modified."
+
+
 
 
 # This stuff is for selecting an audio file.
@@ -22,6 +36,7 @@ func when_audiosel_button_pressed():
 	$"AudioDialog".add_filter("*.ogg, *.wav, *.mp3","Audio Files")
 	if not audio_file_selected_has_been_connected:
 		$"AudioDialog".file_selected.connect(when_audio_file_selected)
+		audio_file_selected_has_been_connected = true
 func when_audio_file_selected(path_for_audio):
 	audio_file_path = path_for_audio
 	$Node/Audio/TextEdit.text = audio_file_path
