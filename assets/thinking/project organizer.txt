@@ -1,8 +1,10 @@
 TASKS ON DA LIST-------------------------------------------
 	TO DO
+		Figure out a way to tab out of a textedit
 		Functioning audio player
 		Add grid so you can actually USE THE SOUNDBOARD 😲😲🙀🙀🙀🙀🙀😲😲 (I'm so sorry)
 			Grid Layout
+				Dont make it overlap with the buttons (figure out the scrollbar)
 				Load functionality
 					image Preview
 	COMPLETED

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1wnh57uyoy0d"]
+[gd_scene load_steps=3 format=3 uid="uid://b1wnh57uyoy0d"]
 
 [ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/audiocustomizewindow.gd" id="1_bk5al"]
-[ext_resource type="Script" path="res://assets/scenes/audiocustomizewindow/TextEdit.gd" id="2_2w8tm"]
 [ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/unchosenaudioimage.png" id="2_lqb3e"]
 
 [node name="AddCustomizeAudio" type="Window"]
@@ -28,9 +27,11 @@ offset_left = 5.0
 offset_top = 3.0
 offset_right = 419.645
 offset_bottom = 68.985
+focus_neighbor_bottom = NodePath("../../Audio/Button")
+focus_next = NodePath("../../Audio/Button")
+focus_previous = NodePath("../../OK and Cancel/save")
 placeholder_text = "Give it a name, chucklenuts."
 draw_tabs = true
-script = ExtResource("2_2w8tm")
 
 [node name="OK and Cancel" type="Control" parent="Node"]
 layout_mode = 3
@@ -45,6 +46,10 @@ offset_left = 6.185
 offset_top = 98.695
 offset_right = 52.455
 offset_bottom = 129.695
+focus_neighbor_top = NodePath("../../Audio/Button")
+focus_neighbor_right = NodePath("../cancel")
+focus_next = NodePath("../cancel")
+focus_previous = NodePath("../../Image/TextureButton")
 text = "Save
 "
 
@@ -54,6 +59,11 @@ offset_left = 61.196
 offset_top = 99.21
 offset_right = 121.196
 offset_bottom = 130.21
+focus_neighbor_left = NodePath("../save")
+focus_neighbor_top = NodePath("../../Audio")
+focus_neighbor_right = NodePath("../../Image/TextureButton")
+focus_next = NodePath("../../TextName/TextEdit")
+focus_previous = NodePath("../save")
 text = "Cancel
 "
 
@@ -73,6 +83,11 @@ offset_left = -2.5
 offset_top = -11.345
 offset_right = 50.5
 offset_bottom = 19.655
+focus_neighbor_top = NodePath("../../TextName/TextEdit")
+focus_neighbor_right = NodePath("../../Image/TextureButton")
+focus_neighbor_bottom = NodePath("../../OK and Cancel/save")
+focus_next = NodePath("../../Image/TextureButton")
+focus_previous = NodePath("../../TextName/TextEdit")
 text = "Audio"
 
 [node name="TextEdit" type="TextEdit" parent="Node/Audio"]
@@ -103,6 +118,10 @@ offset_left = 122.0
 offset_top = 73.19
 offset_right = 250.0
 offset_bottom = 201.19
+focus_neighbor_left = NodePath("../../Audio/Button")
+focus_neighbor_top = NodePath("../../TextName/TextEdit")
+focus_next = NodePath("../../OK and Cancel/save")
+focus_previous = NodePath("../../Audio/Button")
 texture_normal = ExtResource("2_lqb3e")
 ignore_texture_size = true
 stretch_mode = 0

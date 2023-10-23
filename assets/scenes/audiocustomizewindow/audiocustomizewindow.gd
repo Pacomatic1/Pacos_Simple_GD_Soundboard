@@ -2,7 +2,7 @@ extends Window
 func _ready():
 	self.close_requested.connect(when_window_closed)
 	get_parent().send_to_modify_sound_effect.connect(when_given_information)
-	$Node/TextName/TextEdit.grab_focus()
+	$"Node/OK and Cancel/save".grab_focus()
 
 # When the parent tells it impportant imformation
 var unique_sound_id
