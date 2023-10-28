@@ -69,5 +69,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Misc_Nodes" type="Node" parent="."]
+
+[node name="KillNodeTimer" type="Timer" parent="Misc_Nodes"]
+wait_time = 0.015
+
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/FileModButton" to="." method="_on_file_mod_button_pressed"]
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

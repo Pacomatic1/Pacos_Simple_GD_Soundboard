@@ -3,8 +3,8 @@ extends Control
 var MainObjectsParent
 func _ready():
 	MainObjectsParent = self.get_parent().get_parent().get_parent().get_parent().get_parent()
-	# Tell the grid who you are
 	MainObjectsParent.send_info_to_sfx_grid_obj.connect(_when_soundeffect_data_given)
+	MainObjectsParent.kill_all_grid_sfx_objs.connect(_when_told_to_be_removed)
 var AssignedUniqueID
 func _when_soundeffect_data_given(SentUniqueSoundID):
 	if AssignedUniqueID == null:
@@ -22,3 +22,5 @@ func _on_options_button_pressed():
 func _when_sound_effect_played():
 	print("Played sound: " + AssignedUniqueID)
 	$"/root/GlobalModule".PlayAudioFile("user://profiles/" + $"/root/GlobalModule".CurrentProfile + "/soundeffects/" + AssignedUniqueID + '/soundeffect.mp3')
+func _when_told_to_be_removed():
+	queue_free()
