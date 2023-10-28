@@ -49,5 +49,5 @@ func PlayAudioFile(pathtofile: String):
 	var FileToPlay = FileAccess.open(pathtofile, FileAccess.READ)
 	var SoundFromFile = AudioStreamMP3.new()
 	SoundFromFile.data = FileToPlay.get_buffer(FileToPlay.get_length())
-	$AudioStreamPlayer.stream = SoundFromFile # Sadly, the one spot it won't come from is the user:// directory. WHY?????????????
+	$AudioStreamPlayer.stream = SoundFromFile
 	$AudioStreamPlayer.play()

@@ -52,17 +52,22 @@ layout_mode = 2
 [node name="SoundBoardGrid" type="Node" parent="UI_Parent"]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI_Parent/SoundBoardGrid"]
-offset_left = 4.0
-offset_top = 35.0
-offset_right = 575.0
-offset_bottom = 323.0
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.105
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0320001
+offset_top = -0.0200005
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="UI_Parent/SoundBoardGrid/ScrollContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="UI_Parent/SoundBoardGrid/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 10
 
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/FileModButton" to="." method="_on_file_mod_button_pressed"]
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
