@@ -22,7 +22,7 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	var ImageToStore
 	if ImagePath == '': # If you didn't choose anything, replace it with this. Since you can't load a resource as a standard image in export, I have to use this as a workaround.
 		ImagePath = "res://assets/themes/default/unchosenaudioimage.png"
-		ImageToStore = load(ImagePath).get_image() 
+		ImageToStore = load(ImagePath).get_image()
 	else: ImageToStore = Image.load_from_file(ImagePath) 
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png")
 	# Now for the audio.
