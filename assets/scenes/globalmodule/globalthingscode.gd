@@ -39,6 +39,10 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	print("Save complete.")
 	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + '/')
+
+
+
+
 func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!

@@ -33,7 +33,7 @@ var audio_file_path
 var audio_file_selected_has_been_connected
 func when_audiosel_button_pressed():
 	add_child(audio_file_dialog.instantiate())
-	$"AudioDialog".add_filter("*.ogg, *.wav, *.mp3","Audio Files")
+	$"AudioDialog".add_filter("*.mp3","Audio Files")
 	if not audio_file_selected_has_been_connected:
 		$"AudioDialog".file_selected.connect(when_audio_file_selected)
 		audio_file_selected_has_been_connected = true
