@@ -21,3 +21,4 @@ func _on_options_button_pressed():
 
 func _when_sound_effect_played():
 	print("Played sound: " + AssignedUniqueID)
+	$"/root/GlobalModule".PlayAudioFile("user://profiles/" + $"/root/GlobalModule".CurrentProfile + "/soundeffects/" + AssignedUniqueID + '/soundeffect.mp3')

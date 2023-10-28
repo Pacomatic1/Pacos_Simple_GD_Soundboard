@@ -26,7 +26,7 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	else: ImageToStore = Image.load_from_file(ImagePath) 
 	ImageToStore.save_png("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/coverimage.png")
 	# Now for the audio.
-	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.ogg"
+	if AudioPath == '': AudioPath = "res://assets/themes/default/unchosenaudio.mp3"
 	if AudioPath != "The audio is not going to be modified.":
 		var AudioToStore = FileAccess.open("user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + "/soundeffect." + AudioPath.get_extension(), FileAccess.WRITE)
 		ConfigFileForSound.set_value("SoundFXAudioFile", "AudioFileExtension", AudioPath.get_extension())
@@ -46,5 +46,8 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.
 	# By the way, the path can come from anywhere, like the root of the drive. Yay!
-	$AudioStreamPlayer.stream = load(pathtofile) # Sadly, the one spot it won't come from is the user:// directory. WHY?????????????
+	var FileToPlay = FileAccess.open(pathtofile, FileAccess.READ)
+	var SoundFromFile = AudioStreamMP3.new()
+	SoundFromFile.data = FileToPlay.get_buffer(FileToPlay.get_length())
+	$AudioStreamPlayer.stream = SoundFromFile # Sadly, the one spot it won't come from is the user:// directory. WHY?????????????
 	$AudioStreamPlayer.play()
