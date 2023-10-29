@@ -2,6 +2,7 @@ TASKS ON DA LIST-------------------------------------------
 	README
 		Tasks are prioritized base ont heir order in the list; everything at the top will be of high priority, while everything at the bottom will be of low priority. And since we're using Godot, you should hopefully  be able to comprehend how each task has parents, children, and blah blah blah. If you cannot, then why are you here?
 	TO DO
+		Stop sounds button (just play the sound of... nothing)
 		Figure out a way to tab out of a textedit
 	BACKBURNER AND NOT PRIORITY
 		Profile support (do it once the thing actualy works)

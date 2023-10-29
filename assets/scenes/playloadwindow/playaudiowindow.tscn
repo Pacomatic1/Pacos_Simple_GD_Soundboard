@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://68ca2vk6tjtg"]
+[gd_scene load_steps=6 format=3 uid="uid://68ca2vk6tjtg"]
 
 [ext_resource type="Script" path="res://assets/scenes/playloadwindow/playaudiowindow.gd" id="1_7wugq"]
 [ext_resource type="Texture2D" uid="uid://bqwa303ek508t" path="res://assets/themes/default/plusicon.png" id="2_pulwo"]
 [ext_resource type="Texture2D" uid="uid://bisr7x7yuge3w" path="res://assets/themes/default/credits_icon.png" id="3_5bcy6"]
+[ext_resource type="Texture2D" uid="uid://bswvqn820qfek" path="res://assets/themes/default/pausesfxicon.png" id="3_vmd13"]
 [ext_resource type="Texture2D" uid="uid://hmy057tgucgk" path="res://assets/themes/default/folder_icon.png" id="3_xvgu8"]
 
 [node name="MainParentNode" type="Node"]
@@ -60,6 +61,14 @@ icon = ExtResource("2_pulwo")
 icon_alignment = 1
 expand_icon = true
 
+[node name="MuteAllSoundsButton" type="Button" parent="UI_Parent/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_vmd13")
+icon_alignment = 1
+expand_icon = true
+
 [node name="OpenSaveFolderButton" type="Button" parent="UI_Parent/TopBar/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -79,5 +88,6 @@ expand_icon = true
 layout_mode = 2
 
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/FileModButton" to="." method="_on_file_mod_button_pressed"]
+[connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/MuteAllSoundsButton" to="." method="_on_mute_all_sounds_button_pressed"]
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/OpenSaveFolderButton" to="." method="_on_save_folder_button_pressed"]
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

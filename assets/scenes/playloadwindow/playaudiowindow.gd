@@ -52,3 +52,6 @@ func propagate_grid_objects():
 
 
 func _on_save_folder_button_pressed():OS.shell_open(ProjectSettings.globalize_path('user://'))
+
+
+func _on_mute_all_sounds_button_pressed():$"/root/GlobalModule".PlayAudioFile("res://assets/themes/default/silence.mp3")
