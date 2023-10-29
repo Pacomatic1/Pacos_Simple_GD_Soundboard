@@ -46,7 +46,7 @@ func delete_sound_effect(SoundID: String):
 		DirAccess.remove_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" + SoundID +'/' + String)
 	# And NOW we can delete it. Phew!
 	DirAccess.remove_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" + SoundID)
-	print(SoundID + " has been deleted!")
+	print("Sound ID: "+ SoundID + " has been deleted!")
 	$/root/MainParentNode.when_sound_deleted() # Nothing to do with files, just for reloads and whatnot. Don't worry too much.
 
 func PlayAudioFile(pathtofile: String):

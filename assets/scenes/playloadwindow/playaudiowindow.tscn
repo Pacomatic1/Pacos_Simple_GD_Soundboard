@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://68ca2vk6tjtg"]
+[gd_scene load_steps=5 format=3 uid="uid://68ca2vk6tjtg"]
 
 [ext_resource type="Script" path="res://assets/scenes/playloadwindow/playaudiowindow.gd" id="1_7wugq"]
 [ext_resource type="Texture2D" uid="uid://bqwa303ek508t" path="res://assets/themes/default/plusicon.png" id="2_pulwo"]
 [ext_resource type="Texture2D" uid="uid://bisr7x7yuge3w" path="res://assets/themes/default/credits_icon.png" id="3_5bcy6"]
+[ext_resource type="Texture2D" uid="uid://hmy057tgucgk" path="res://assets/themes/default/folder_icon.png" id="3_xvgu8"]
 
 [node name="MainParentNode" type="Node"]
 script = ExtResource("1_7wugq")
@@ -14,6 +15,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SoundBoardGrid" type="Node" parent="UI_Parent"]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI_Parent/SoundBoardGrid"]
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.105
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0320001
+offset_top = -0.0200005
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI_Parent/SoundBoardGrid/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TopBar" type="Control" parent="UI_Parent"]
 layout_mode = 2
@@ -39,6 +60,14 @@ icon = ExtResource("2_pulwo")
 icon_alignment = 1
 expand_icon = true
 
+[node name="OpenSaveFolderButton" type="Button" parent="UI_Parent/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_xvgu8")
+icon_alignment = 1
+expand_icon = true
+
 [node name="CreditsButton" type="Button" parent="UI_Parent/TopBar/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -49,30 +78,6 @@ expand_icon = true
 [node name="MarginContainerEnd" type="MarginContainer" parent="UI_Parent/TopBar/HBoxContainer"]
 layout_mode = 2
 
-[node name="SoundBoardGrid" type="Node" parent="UI_Parent"]
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UI_Parent/SoundBoardGrid"]
-anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.105
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.0320001
-offset_top = -0.0200005
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-horizontal_scroll_mode = 0
-
-[node name="HFlowContainer" type="HFlowContainer" parent="UI_Parent/SoundBoardGrid/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Misc_Nodes" type="Node" parent="."]
-
-[node name="KillNodeTimer" type="Timer" parent="Misc_Nodes"]
-wait_time = 0.015
-
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/FileModButton" to="." method="_on_file_mod_button_pressed"]
+[connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/OpenSaveFolderButton" to="." method="_on_save_folder_button_pressed"]
 [connection signal="pressed" from="UI_Parent/TopBar/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
