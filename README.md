@@ -4,7 +4,12 @@ When this project was started, I played Fortnite a ton with my friends. I used Y
 But YouTube is slow and impractical because it's... anything _but_ a soundboard.  
 So I thought, screw it, why not.  
 ### How to use the Program
-I'm no overpaid designer, but this one should be quite obvious. I hope.  
+Just download the program and figure it out. Should be easy.
+If you want to delete the program... 
+Open the program,
+Click the folder button 
+Delete the program (eg. Windows users delete the .exe)
+Delete everything inside the 'Hand-Made Soundboard' folder.
 ### Compiling and Editing
 This was made in Godot 4.1.  
 So to do anything to the program, get Godot 4.1, and open the source code.  
