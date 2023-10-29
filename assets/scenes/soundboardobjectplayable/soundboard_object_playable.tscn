@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0wbsbumdjgqe"]
+[gd_scene load_steps=5 format=3 uid="uid://d0wbsbumdjgqe"]
 
 [ext_resource type="Texture2D" uid="uid://b2lsxsfpyegpe" path="res://assets/themes/default/unchosenaudioimage.png" id="1_0caik"]
 [ext_resource type="Script" path="res://assets/scenes/soundboardobjectplayable/soundboard_object_playable.gd" id="1_srcfr"]
 [ext_resource type="Texture2D" uid="uid://4cvu3kc0aloy" path="res://assets/themes/default/3dots/3doticon.png" id="2_kohpa"]
+[ext_resource type="Texture2D" uid="uid://doi0vnqbw448l" path="res://assets/themes/default/garbage_icon.png" id="2_sm2v2"]
 
 [node name="Soundboard_Object" type="Control"]
 custom_minimum_size = Vector2(242, 121)
@@ -17,6 +18,7 @@ offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_srcfr")
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -28,19 +30,22 @@ layout_mode = 0
 offset_right = 242.0
 offset_bottom = 121.0
 
+[node name="GarbageButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 89.0
+offset_right = 153.0
+offset_bottom = 121.0
+icon = ExtResource("2_sm2v2")
+icon_alignment = 1
+expand_icon = true
+
 [node name="OptionsIcon" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 209.0
+layout_mode = 2
+offset_left = 210.0
 offset_top = 89.0
 offset_right = 242.0
 offset_bottom = 121.0
-grow_horizontal = 0
-grow_vertical = 0
 icon = ExtResource("2_kohpa")
 icon_alignment = 1
 expand_icon = true
@@ -73,5 +78,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="Control/BackgroundButton" to="." method="_when_sound_effect_played"]
+[connection signal="pressed" from="Control/GarbageButton" to="." method="_on_garbage_button_pressed"]
 [connection signal="pressed" from="Control/OptionsIcon" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Control/SoundEffectCover" to="." method="_when_sound_effect_played"]

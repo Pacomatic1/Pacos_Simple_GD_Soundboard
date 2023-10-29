@@ -40,8 +40,14 @@ func mod_or_save_sound_effects(SoundTitle: String, UniqueSoundID: String, ImageP
 	emit_signal("sound_has_been_saved")
 	print("You can find the sound at " + "user://profiles/" + CurrentProfile + "/soundeffects/" + UniqueSoundID + '/')
 
-
-
+func delete_sound_effect(SoundID: String):
+	# First empty the folder
+	for String in DirAccess.get_files_at("user://profiles/" + CurrentProfile + "/soundeffects/" + SoundID):
+		DirAccess.remove_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" + SoundID +'/' + String)
+	# And NOW we can delete it. Phew!
+	DirAccess.remove_absolute("user://profiles/" + CurrentProfile + "/soundeffects/" + SoundID)
+	print(SoundID + " has been deleted!")
+	$/root/MainParentNode.when_sound_deleted() # Nothing to do with files, just for reloads and whatnot. Don't worry too much.
 
 func PlayAudioFile(pathtofile: String):
 	# Call this function, with whatever path you desire. Then it will do the thing.

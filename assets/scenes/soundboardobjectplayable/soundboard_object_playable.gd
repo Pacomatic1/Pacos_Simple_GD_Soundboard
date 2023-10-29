@@ -15,12 +15,14 @@ func _when_soundeffect_data_given(SentUniqueSoundID):
 	var SFX_Cover = Image.new()
 	SFX_Cover.load(SFX_FolderPath + "coverimage.png")
 	$Control/SoundEffectCover.texture_normal = ImageTexture.create_from_image(SFX_Cover)
-func _on_options_button_pressed():
-	MainObjectsParent.on_externally_told_to_mod_sound(AssignedUniqueID)
+
+func _on_options_button_pressed():MainObjectsParent.on_externally_told_to_mod_sound(AssignedUniqueID)
 
 
 func _when_sound_effect_played():
 	print("Played sound: " + AssignedUniqueID)
 	$"/root/GlobalModule".PlayAudioFile("user://profiles/" + $"/root/GlobalModule".CurrentProfile + "/soundeffects/" + AssignedUniqueID + '/soundeffect.mp3')
-func _when_told_to_be_removed():
-	queue_free()
+
+func _when_told_to_be_removed():queue_free()
+
+func _on_garbage_button_pressed():$/root/GlobalModule.delete_sound_effect(AssignedUniqueID)

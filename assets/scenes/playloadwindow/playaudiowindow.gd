@@ -7,8 +7,12 @@ func _ready():
 	$"/root/GlobalModule".sound_has_been_saved.connect(when_sound_finished_saving)
 	propagate_grid_objects()
 
-# Kill all grid objects!
+
 func when_sound_finished_saving():
+	kill_grid_objects()
+	propagate_grid_objects()
+
+func when_sound_deleted(): # Don't put any file-related operations here! Put it in the Global Module instead.
 	kill_grid_objects()
 	propagate_grid_objects()
 
