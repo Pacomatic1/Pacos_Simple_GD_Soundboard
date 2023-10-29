@@ -5,7 +5,7 @@ But YouTube is slow and impractical because it's... anything _but_ a soundboard.
 So I thought, screw it, why not.  
 ### How to use the Program
 Just download the program and figure it out. Should be easy.
-If you want to delete the program... 
+If you want to delete the program...  
 Open the program,
 Click the folder button 
 Delete the program (eg. Windows users delete the .exe)
