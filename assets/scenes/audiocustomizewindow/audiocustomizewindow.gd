@@ -71,9 +71,6 @@ func once_settings_have_finished_saving():
 	print("Audio Dialog window has closed.")
 	self.queue_free()
 
-
-
-
 # This happens when you cancel or close the window.
 func when_window_closed(): _on_cancel_pressed() # I could link the signal directly to when_cancel_pressed, but who knows, maybe I might want to do something extra. Plus, the extra slowdown is so negligible that nobody loses anyways.
 func _on_cancel_pressed():
