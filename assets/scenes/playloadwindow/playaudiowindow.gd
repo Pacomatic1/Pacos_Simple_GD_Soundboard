@@ -49,8 +49,6 @@ func propagate_grid_objects():
 		SoundUniqueID = String # Just to make it a little less confusing.
 		send_info_to_sfx_grid_obj.emit(SoundUniqueID)
 
-
-
 func _on_save_folder_button_pressed():OS.shell_open(ProjectSettings.globalize_path('user://'))
 
 
