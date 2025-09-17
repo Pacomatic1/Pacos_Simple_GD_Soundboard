@@ -14,5 +14,4 @@ If you want to delete the program...
 This was made in Godot 4.1.  
 As such, all you gotta do is get Godot 4.1, open the project, and do whatever.
 And if you want to compile it, follow the instructions on the Godot 4 documentation.
-### Miscellaneous
-[This is my website, as of this project starting.](https://pacomatic1.github.io/)  
+
